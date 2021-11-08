@@ -8,7 +8,9 @@ var logger = require("morgan");
 
 var indexRouter = require("./app_server/routes/index");
 var usersRouter = require("./app_server/routes/users");
-const travelRouter = require("./app_server/routes/travel");
+var travelRouter = require("./app_server/routes/travel");
+var roomsRouter = require("./app_server/routes/rooms");
+
 const { hasSubscribers } = require("diagnostics_channel");
 
 var app = express();
@@ -25,11 +27,17 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+
+// uses public folder to render pages
+// app.use(express.static(path.join(__dirname, "public")));
+// set up images and css data locations
+app.use(express.static(path.join(__dirname, "public/images")));
+app.use(express.static(path.join(__dirname, "public/css")));
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/travel", travelRouter);
+app.use("/rooms", roomsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
