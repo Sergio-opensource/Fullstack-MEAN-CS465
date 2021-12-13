@@ -43,7 +43,8 @@ export class LoginComponent implements OnInit {
     let newUser = new User();
     newUser.email = this.credentials.email;
     newUser.password = this.credentials.password;
-    newUser.name = this.credentials.name;
+    newUser.name = this.credentials.email;
+    console.log(newUser);
     this.authenticationService
       .register(newUser)
       .then(() => this.router.navigateByUrl("#"))

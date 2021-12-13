@@ -2,9 +2,9 @@ import { Injectable, Inject } from "@angular/core";
 import { Http } from "@angular/http";
 
 import { Trip } from "../models/trip";
-import { BROWSER_STORAGE } from "../storage";
 import { User } from "../models/user";
 import { AuthResponse } from "../models/authresponse";
+import { BROWSER_STORAGE } from "../storage";
 
 @Injectable()
 export class TripDataService {
